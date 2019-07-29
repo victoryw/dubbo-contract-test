@@ -8,7 +8,8 @@
 	<version>${application.version}</version>
 	<modules>
 		<module>provider</module>
-	</modules>
+        <module>contract-file</module>
+    </modules>
 	<name>contract-test</name>
 	<description>Demo project for Spring Boot</description>
 
@@ -67,6 +68,7 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>${spring-boot.version}</version>
 			</plugin>
 		</plugins>
 	</build>
