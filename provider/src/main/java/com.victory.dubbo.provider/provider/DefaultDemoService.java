@@ -1,7 +1,7 @@
-package com.victory.dubbo.contracttest.provider;
+package com.victory.dubbo.provider.provider;
 
 import com.alibaba.dubbo.config.annotation.Service;
-import com.victory.dubbo.contracttest.contract.DemoService;
+import com.victory.dubbo.provider.contract.DemoService;
 
 @Service(
         version = "${demo.service.version}",

@@ -1,4 +1,4 @@
-package com.victory.dubbo.contracttest.contract;
+package com.victory.dubbo.provider.contract;
 
 public interface DemoService {
     String sayHello(String name);

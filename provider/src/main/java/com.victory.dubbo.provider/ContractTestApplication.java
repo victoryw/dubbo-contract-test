@@ -1,4 +1,4 @@
-package com.victory.dubbo.contracttest;
+package com.victory.dubbo.provider;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
