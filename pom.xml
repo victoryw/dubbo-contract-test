@@ -9,7 +9,8 @@
 	<modules>
 		<module>provider</module>
         <module>contract-file</module>
-    </modules>
+		<module>consumer</module>
+	</modules>
 	<name>contract-test</name>
 	<description>Demo project for Spring Boot</description>
 
