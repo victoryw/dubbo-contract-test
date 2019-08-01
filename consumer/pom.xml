@@ -5,7 +5,8 @@
     <parent>
         <artifactId>contract-test</artifactId>
         <groupId>com.victory.dubbo</groupId>
-        <version>1.0.0</version>
+        <version>${application.version}</version>
+        <relativePath>../../contract-test</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
