@@ -1,1 +1,2 @@
 # dubbo-contract-test
+[![Build Status](https://tianyawy.visualstudio.com/dubbo-contract-test/_apis/build/status/victoryw.dubbo-contract-test?branchName=master)](https://tianyawy.visualstudio.com/dubbo-contract-test/_build/latest?definitionId=3&branchName=master)
