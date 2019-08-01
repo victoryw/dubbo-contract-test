@@ -5,18 +5,19 @@
     <parent>
         <artifactId>contract-test</artifactId>
         <groupId>com.victory.dubbo</groupId>
+        <!--suppress MavenPropertyInParent -->
         <version>${application.version}</version>
-        <relativePath>../../contract-test</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>provider</artifactId>
+    <version>${application.version}</version>
 
     <dependencies>
         <dependency>
             <groupId>com.victory.dubbo</groupId>
             <artifactId>contract-file</artifactId>
-            <version>1.0.0</version>
+            <version>${application.version}</version>
         </dependency>
 
         <dependency>
