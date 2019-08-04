@@ -42,3 +42,7 @@ stages:
             azureContainerRegistry: $(azureContainerRegistry)
             dockerComposeFile: $(dockerComposeFile)
             additionalImageTags: $(Build.BuildId)
+        - task: PublishPipelineArtifact@0
+          inputs:
+            artifactName: 'manifests'
+            targetPath: 'manifests  
