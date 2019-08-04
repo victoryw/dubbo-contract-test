@@ -8,7 +8,6 @@ public class ContractTestApplication {
 
 	public static void main(String[] args) {
 		new SpringApplicationBuilder(ContractTestApplication.class)
-				.web(false)
 				.run(args);
 	}
 

@@ -11,6 +11,7 @@ pool:
 
 steps:
 - task: Maven@3
+  displayName: Build jar
   inputs:
     mavenPomFile: 'pom.xml'
     mavenOptions: '-Xmx3072m'
@@ -20,3 +21,10 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
+- task: DockerCompose@0
+  displayName: Build Image
+  inputs:
+    action: Build Image
+    dockerComposeFile: docker-compose-build.yml
+    qualifyImageNames: false
+    dockerComposeCommand: build

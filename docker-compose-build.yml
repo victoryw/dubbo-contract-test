@@ -1,0 +1,10 @@
+version: "3.7"
+services:
+  consumer:
+    build:
+      context: ./consumer
+    image: dubbo-contract-consumer
+  provider:
+    build:
+      context: ./provider
+    image: dubbo-contract-provider
