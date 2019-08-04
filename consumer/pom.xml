@@ -32,6 +32,11 @@
             <optional>true</optional>
         </dependency>
 
+        <dependency>
+            <groupId>com.netflix.curator</groupId>
+            <artifactId>curator-framework</artifactId>
+        </dependency>
+
         <!-- Dubbo Spring Boot Starter -->
         <dependency>
             <groupId>com.alibaba.boot</groupId>

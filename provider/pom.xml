@@ -42,6 +42,11 @@
             <artifactId>dubbo</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.netflix.curator</groupId>
+            <artifactId>curator-framework</artifactId>
+        </dependency>
+
         <!--for rest protocal-->
         <dependency>
             <groupId>org.jboss.resteasy</groupId>
