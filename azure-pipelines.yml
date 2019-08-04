@@ -24,7 +24,7 @@ steps:
 - task: DockerCompose@0
   displayName: Build Image
   inputs:
-    action: Build Image
+    action:  Run a Docker Compose command
     dockerComposeFile: docker-compose-build.yml
     qualifyImageNames: false
     dockerComposeCommand: build
