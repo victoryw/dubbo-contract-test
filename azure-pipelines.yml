@@ -42,3 +42,9 @@ stages:
             azureContainerRegistry: $(azureContainerRegistry)
             dockerComposeFile: $(dockerComposeFile)
             additionalImageTags: $(Build.BuildId)
+        - task: KubernetesManifest@0
+          inputs:
+            action: 'deploy'
+            kubernetesServiceConnection: 'dubbo-contract-test-k8s'
+            namespace: 'default'
+            manifests: 'k8s/'
