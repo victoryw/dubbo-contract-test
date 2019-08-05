@@ -18,6 +18,8 @@ spec:
       - env:
         - name: demo.service.url
           value:
+        - name: dubbo.reference.check
+          value: false
         - name: dubbo.registry.address
           value: zookeeper://zookeeper:2181
         - name: dubbo.registry.client
