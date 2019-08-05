@@ -39,7 +39,8 @@ Consumer will supprot:
 
 ## road map
 - [ ] upgrade dubbo to 2.7  
-- [ ] fix the health check issue  
+- [ ] fix the health check issue 
+- [ ] zookeeper use the CP/statefule deploy in the k8s
 - [ ] more and complex use case  
 - [ ] dubbo-swagger support  
 - [ ] change the online http service export way from lb to application gateway + ingress  
