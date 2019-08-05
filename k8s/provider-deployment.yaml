@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: dubbo-contract-test-provider
+  name: dubbo-contract-test-provider
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dubbo-contract-test-provider
+  template:
+    metadata:
+      labels:
+        app: dubbo-contract-test-provider
+    spec:
+      containers:
+      - image: victoryw.azurecr.io/dubbo-contract-provider:latest
+        name: provider
+        env:
+        - name: dubbo.registry.address
+          value: zookeeper://zookeeper:2181
+        - name: dubbo.registry.client
+          value: curator
+        - name: dubbo.registry.id
+          value: zookeeper-cluster
+        - name: dubbo.registry.protocol
+          value: zookeeper
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 9090
+          initialDelaySeconds: 10
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 9090
+          initialDelaySeconds: 20
+        ports:
+        - containerPort: 12345
+        - containerPort: 9090

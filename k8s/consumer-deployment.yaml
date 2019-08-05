@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: dubbo-contract-test-consumer
+  name: dubbo-contract-test-consumer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+        app: dubbo-contract-test-consumer
+  template:
+    metadata:
+      labels:
+        app: dubbo-contract-test-consumer
+    spec:
+      containers:
+      - env:
+        - name: demo.service.url
+          value:
+        - name: dubbo.registry.address
+          value: zookeeper://zookeeper:2181
+        - name: dubbo.registry.client
+          value: curator
+        - name: dubbo.registry.id
+          value: zookeeper-cluster
+        - name: dubbo.registry.protocol
+          value: zookeeper
+        image: victoryw.azurecr.io/dubbo-contract-consumer:latest
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 20
+        name: dubbo-contract-test-consumer
+        ports:
+        - containerPort: 8080
+        resources: {}
+      restartPolicy: Always
+status: {}

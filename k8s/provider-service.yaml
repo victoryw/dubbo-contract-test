@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    service:  dubbo-contract-test-provider
+  name:  dubbo-contract-test-provider
+spec:
+  type: LoadBalancer
+  ports:
+  - name: http-port
+    port: 9090
+  - name: duboo-port
+    port: 12345
+  selector:
+    app: dubbo-contract-test-provider
