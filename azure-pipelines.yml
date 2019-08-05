@@ -47,4 +47,4 @@ stages:
             action: 'deploy'
             kubernetesServiceConnection: 'dubbo-contract-test-k8s'
             namespace: 'default'
-            manifests: 'k8s/*.yaml'
+            manifests: 'k8s/*'
