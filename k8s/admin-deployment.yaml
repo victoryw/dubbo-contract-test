@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: duubo-admin
+  name: duubo-admin
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: duubo-admin
+  template:
+    metadata:
+      labels:
+        app: duubo-admin
+    spec:
+      containers:
+      - env:
+        - name: admin.config-center
+          value: zookeeper://zookeeper:2181
+        - name: admin.metadata-report.address
+          value: zookeeper://zookeeper:2181
+        - name: admin.registry.address
+          value: zookeeper://zookeeper:2181
+        image: apache/dubbo-admin:0.1.0
+        name: duubo-admin
+        ports:
+        - containerPort: 8080
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 20
+          periodSeconds: 20
+      restartPolicy: Always

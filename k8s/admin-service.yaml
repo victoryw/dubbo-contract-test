@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    service: dubbo-admin
+  name: dubbo-admin
+spec:
+  type: LoadBalancer
+  selector:
+    app: duubo-admin
+  ports:
+  - name: dubbo-admin
+    port: 8080
