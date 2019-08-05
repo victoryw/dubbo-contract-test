@@ -38,9 +38,9 @@ Consumer will supprot:
 - test service by stub and ignore connect error when start service in test profile
 
 ## road map
-* upgrade dubbo to 2.7
-* fix the health check issue
-* more and complex use case
-* dubbo-swagger support
-* change the online http service export way from lb to application gateway + ingress
-* use the azure pipeline multi-stage to build
+[ ] upgrade dubbo to 2.7
+[ ] fix the health check issue
+[ ] more and complex use case
+[ ] dubbo-swagger support
+[ ] change the online http service export way from lb to application gateway + ingress
+[ ] use the azure pipeline multi-stage to build
