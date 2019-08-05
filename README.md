@@ -3,9 +3,10 @@
 ## How to use
 ### Online
 - dubbo admin: http://23.97.72.214:8080 
-- duboo provider: dubbo://10.0.198.6:12345
-- duboo consumer: http://10.0.4.130:8080/say-hello?name=wy
-- zookeeper: zookeepr://10.0.153.115:2181
+- duboo provider: dubbo://13.94.45.29:12345
+- duboo consumer: http://13.94.40.48:8080/say-hello?name=wy
+- zookeeper: zookeepr://13.75.47.157:2181
+ 
 
 ### Local
 - package & test: mvn package
