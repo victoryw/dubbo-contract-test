@@ -61,6 +61,15 @@ stages:
                   buildType: 'current'
                   artifact: 'k8s'
                   targetPath: '$(System.DefaultWorkingDirectory)'
+              - task: Bash@3
+                inputs:
+                  targetType: 'inline'
+                  script: |
+                    # Write your commands here
+                    
+                    ls -al
+                  workingDirectory: '$(System.DefaultWorkingDirectory)'
+              
               - task: KubernetesManifest@0
                 inputs:
                   action: 'deploy'
