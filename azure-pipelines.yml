@@ -42,17 +42,10 @@ stages:
             azureContainerRegistry: $(azureContainerRegistry)
             dockerComposeFile: $(dockerComposeFile)
             additionalImageTags: $(Build.BuildId)
-        - task: ArchiveFiles@2
-          inputs:
-            rootFolderOrFile: '$(Build.BinariesDirectory)/k8s/*.yaml'
-            includeRootFolder: true
-            archiveType: 'zip'
-            archiveFile: '$(Build.ArtifactStagingDirectory)/k8s.zip'
-            replaceExistingArchive: true
         - task: PublishPipelineArtifact@1
           inputs:
             targetPath: '$(Pipeline.Workspace)'
-            artifact: '$(Build.ArtifactStagingDirectory)/k8s.zip'
+            artifact: '$(Build.ArtifactStagingDirectory)/k8s/'
   - stage: 'deploy_service'
     jobs:
       - deployment: 'deploy'
@@ -67,11 +60,6 @@ stages:
                 inputs:
                   buildType: 'current'
                   targetPath: '$(Pipeline.Workspace)'
-              - task: ExtractFiles@1
-                inputs:
-                  archiveFilePatterns: 'k8s.zip'
-                  destinationFolder: 'k8s'
-                  cleanDestinationFolder: true
               - task: KubernetesManifest@0
                 inputs:
                   action: 'deploy'
