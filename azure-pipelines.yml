@@ -6,9 +6,24 @@ variables:
 trigger:
 - master
 stages:
-  - stage: 'test_package_build_service'
+  - stage: 'test'
     jobs:
       - job: 'test_package_build_service'
+        pool:
+          vmImage: 'ubuntu-latest'
+        steps:
+        - task: Maven@3
+          displayName: test jar
+          inputs:
+            mavenPomFile: 'pom.xml'
+            mavenOptions: '-Xmx3072m'
+            javaHomeOption: 'JDKVersion'
+            jdkVersionOption: '1.8'
+            jdkArchitectureOption: 'x64'
+            publishJUnitResults: true
+            testResultsFiles: '**/surefire-reports/TEST-*.xml'
+            goals: 'TEST'
+      - job: 'build_docker_image'
         pool:
           vmImage: 'ubuntu-latest'
         steps:
@@ -22,7 +37,7 @@ stages:
             jdkArchitectureOption: 'x64'
             publishJUnitResults: true
             testResultsFiles: '**/surefire-reports/TEST-*.xml'
-            goals: 'package'
+            goals: '-Dmaven.test.skip=true package'
         - task: DockerCompose@0
           displayName: Build services
           inputs:
@@ -42,10 +57,14 @@ stages:
             azureContainerRegistry: $(azureContainerRegistry)
             dockerComposeFile: $(dockerComposeFile)
             additionalImageTags: $(Build.BuildId)
+      - job: 'upload_k8s_file'
+        pool:
+          vmImage: 'ubuntu-latest'
+        steps:
         - task: PublishPipelineArtifact@1
           inputs:
             targetPath: '$(System.DefaultWorkingDirectory)/k8s'
-            artifact: 'k8s'
+            artifact: 'k8s'  
   - stage: 'deploy_service'
     jobs:
       - deployment: 'deploy'
