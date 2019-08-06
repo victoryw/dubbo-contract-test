@@ -60,7 +60,7 @@ stages:
                 inputs:
                   buildType: 'current'
                   artifact: 'k8s'
-                  targetPath: '$(Pipeline.Workspace)'
+                  targetPath: '$(System.DefaultWorkingDirectory)'
               - task: KubernetesManifest@0
                 inputs:
                   action: 'deploy'
