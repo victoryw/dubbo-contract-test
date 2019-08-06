@@ -45,7 +45,7 @@ stages:
         - task: PublishPipelineArtifact@1
           inputs:
             targetPath: '$(Pipeline.Workspace)'
-            artifact: '$(Build.ArtifactStagingDirectory)/k8s/'
+            artifact: '$(Build.ArtifactStagingDirectory)/k8s'
   - stage: 'deploy_service'
     jobs:
       - deployment: 'deploy'
