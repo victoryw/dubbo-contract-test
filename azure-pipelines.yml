@@ -42,6 +42,12 @@ stages:
             azureContainerRegistry: $(azureContainerRegistry)
             dockerComposeFile: $(dockerComposeFile)
             additionalImageTags: $(Build.BuildId)
+  - stage: 'deploy service'
+    jobs:
+      - job: 'deploy'
+        pool:
+          vmImage: 'ubuntu-latest'
+        steps:
         - task: KubernetesManifest@0
           inputs:
             action: 'deploy'
