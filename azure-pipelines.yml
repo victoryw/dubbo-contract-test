@@ -44,8 +44,8 @@ stages:
             additionalImageTags: $(Build.BuildId)
         - task: PublishPipelineArtifact@1
           inputs:
-            targetPath: '$(Pipeline.Workspace)'
-            artifact: '$(Build.ArtifactStagingDirectory)/k8s'
+            targetPath: '$(System.DefaultWorkingDirectory)/k8s'
+            artifact: 'k8s'
   - stage: 'deploy_service'
     jobs:
       - deployment: 'deploy'
@@ -59,6 +59,7 @@ stages:
               - task: DownloadPipelineArtifact@2
                 inputs:
                   buildType: 'current'
+                  artifact: 'k8s'
                   targetPath: '$(Pipeline.Workspace)'
               - task: KubernetesManifest@0
                 inputs:
